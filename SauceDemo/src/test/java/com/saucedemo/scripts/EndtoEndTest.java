@@ -1,5 +1,7 @@
 package com.saucedemo.scripts;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,11 +11,12 @@ import com.saucedemo.pages.CheckOutPage1;
 import com.saucedemo.pages.CheckOutPage2;
 import com.saucedemo.pages.HomePage;
 import com.saucedemo.pages.LoginPage;
+import com.saucedemo.utilities.WaitUtility;
 
-public class CheckoutPageTest2 extends TestHelper {
+public class EndtoEndTest extends TestHelper {
 
-	@Test
-	public void verifyUserAbletoCheckOutStep2Process() {
+	@Test(priority = 1)
+	public void verifyUserAbletoCheckOutComplete() throws IOException {
 		LoginPage loginPage = new LoginPage(webDriver);
 		loginPage.login("standard_user", "secret_sauce");
 		HomePage homepage = new HomePage(webDriver);
@@ -30,9 +33,13 @@ public class CheckoutPageTest2 extends TestHelper {
 		CheckOutPage2 checkoutpage2 = new CheckOutPage2(webDriver);
 		checkoutpage2.clickonFinish();
 		EndtoEndPage checkoutComplete = new EndtoEndPage(webDriver);
-		boolean val = checkoutComplete.isCheckoutPageCompleteLoaded();
+		checkoutComplete.clickonBacktoHomeButton();
+		homepage.isHomePageLoaded();
+		homepage.clickonsideMenu();
+		homepage.clickonlogOut();
+		boolean val = loginPage.isLoginPageLoaded();
 		Assert.assertTrue(val);
-		System.out.println("Check Out Completed !!!");
+		System.out.println("Products Purchased and Logged Out Successfully !!!");
 
 	}
 

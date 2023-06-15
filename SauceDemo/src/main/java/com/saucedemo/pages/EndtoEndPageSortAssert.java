@@ -9,7 +9,7 @@ import com.saucedemo.constants.Constants;
 import com.saucedemo.utilities.GenericUtility;
 import com.saucedemo.utilities.WaitUtility;
 
-public class CheckOutCompletePage {
+public class EndtoEndPageSortAssert {
 	WebDriver driver;
 
 	@FindBy(xpath = "//h2[@class='complete-header']")
@@ -18,7 +18,7 @@ public class CheckOutCompletePage {
 	@FindBy(xpath = "//button[@id='back-to-products']")
 	WebElement backtoHomeButton;
 
-	public CheckOutCompletePage(WebDriver driver) {
+	public EndtoEndPageSortAssert(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
